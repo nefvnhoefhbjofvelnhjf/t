@@ -1,18 +1,40 @@
 <!DOCTYPE html>
 <html>
 <head>
- 
- <script async src="https://www.googletagmanager.com/gtag/js?id=G-375936345"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+ <script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-app.js";
+  import { getFirestore, doc, getDoc, setDoc, updateDoc, increment } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-firestore.js";
 
-  gtag('config', 'G-375936345');
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyCQSZdhCIxeK1796BrsxiEYKNkMBXJ9tio",
+    authDomain: "compteur-9e66f.firebaseapp.com",
+    projectId: "compteur-9e66f",
+    storageBucket: "compteur-9e66f.firebasestorage.app",
+    messagingSenderId: "242821527618",
+    appId: "1:242821527618:web:ffbaad6be4dc5693a915db"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
  
+  const siteName = "cma";  // site2, site3, site4, site5
+
+  async function countVisit() {
+    const ref = doc(db, "visites", siteName);
+    const snap = await getDoc(ref);
+
+    if (!snap.exists()) {
+      await setDoc(ref, { total: 1 });
+    } else {
+      await updateDoc(ref, { total: increment(1) });
+    }
+  }
+
+  countVisit();
 </script>
- 
- <script type="text/javascript" src="https://www.free-counters.org/"></script>
+
 
     <meta charset="UTF-8">
     <title>CV + Lettre de motivation</title>
@@ -45,6 +67,7 @@ Merci de m'envoyer un mail si vous avez cliqué sur ce lien.
 
 </body>
 </html>
+
 
 
 
