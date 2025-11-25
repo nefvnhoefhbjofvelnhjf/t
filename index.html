@@ -4,41 +4,7 @@
   <title>CV + Lettre de motivation</title>
 </head>
 <body>
-<h1>Bienvenue sur Site 1</h1>
-<p>Votre visite a été comptée !</p>
-
-<script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-app.js";
-import { getFirestore, doc, getDoc, setDoc, updateDoc, increment } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-firestore.js";
-
-
-const firebaseConfig = {
-    apiKey: "AIzaSyCQSZdhCIxeK1796BrsxiEYKNkMBXJ9tio",
-    authDomain: "compteur-9e66f.firebaseapp.com",
-    projectId: "compteur-9e66f",
-    storageBucket: "compteur-9e66f.firebasestorage.app",
-    messagingSenderId: "242821527618",
-    appId: "1:242821527618:web:ffbaad6be4dc5693a915db"
-};
-
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-
-const siteName = "cma";
-
-async function countVisit() {
-  const ref = doc(db, "visites", siteName);
-  const snap = await getDoc(ref);
-
-  if (!snap.exists()) {
-    await setDoc(ref, { total: 1 });
-  } else {
-    await updateDoc(ref, { total: increment(1) });
-  }
-}
-
-countVisit();
-</script>
+ <img src="https://hits.sh/nefvnhoefhbjofvelnhjf.github.io/cma.svg?style=flat-square&label=visiteurs&color=blue" alt="visiteurs">
 </body>
 </html>
  
@@ -73,6 +39,7 @@ Merci de m'envoyer un mail si vous avez cliqué sur ce lien.
 
 </body>
 </html>
+
 
 
 
